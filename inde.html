@@ -1,1 +1,154 @@
-<p>this is neww repo</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend with Grey Dot Mouse Tracker</title>
+    <style>
+        /* Reset and global styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Background GIF styling */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black url('sphere1.gif') no-repeat center center;
+            background-size: contain;
+            z-index: -1;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav .logo img {
+            height: 40px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Centered search panel styles */
+        .search-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-panel {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+        .search-panel input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            outline: none;
+            background: #222;
+            color: white;
+        }
+        .search-panel button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-panel button:hover {
+            background: #0056b3;
+        }
+
+        /* Mouse tracker dot styles */
+        .mouse-tracker {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: grey;
+            border-radius: 50%;
+            pointer-events: none; /* Prevent the dot from interfering with pointer events */
+            z-index: 1001; /* Ensure it stays above other elements */
+            transform: translate(-60%, -60%); /* Center the dot exactly on the cursor */
+        }
+    </style>
+</head>
+<body>
+    <!-- Background GIF -->
+    <div class="background"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+        </ul>
+    </nav>
+
+    <!-- Centered Search Panel -->
+    <div class="search-container">
+        <div class="search-panel">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <!-- Mouse Tracker Dot -->
+    <div class="mouse-tracker" id="mouseTracker"></div>
+
+    <script>
+        // JavaScript to move the tracker dot with the mouse
+        document.addEventListener("mousemove", function(event) {
+            // Get the mouse tracker element
+            const tracker = document.getElementById("mouseTracker");
+
+            // Set the position of the tracker based on mouse movement
+            tracker.style.left = event.clientX + "px";
+            tracker.style.top = event.clientY + "px";
+        });
+    </script>
+</body>
+</html>
